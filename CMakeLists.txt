@@ -28,4 +28,10 @@ set_target_properties( ${OUT_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BI
 # Копирование exe в папку бин
 add_custom_command( TARGET ${OUT_EXE} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy  $<TARGET_FILE_DIR:${OUT_EXE}>/${OUT_EXE}.exe ${CMAKE_SOURCE_DIR}/bin)
 
-add_subdirectory(src/external)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(src/external/glfw)
+target_link_libraries(${OUT_EXE} glfw)
