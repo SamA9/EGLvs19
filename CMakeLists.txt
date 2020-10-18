@@ -28,4 +28,4 @@ set_target_properties( ${OUT_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BI
 # Копирование exe в папку бин
 add_custom_command( TARGET ${OUT_EXE} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy  $<TARGET_FILE_DIR:${OUT_EXE}>/${OUT_EXE}.exe ${CMAKE_SOURCE_DIR}/bin)
 
-
+add_subdirectory(src/external)
