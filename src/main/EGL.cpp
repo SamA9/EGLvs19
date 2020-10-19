@@ -5,7 +5,7 @@
 #include "../external/FINI/fini.h"
 
 using namespace std;
-
+using namespace fini;
 int main(int argc , char *args[])
 {
     cFINIin file;

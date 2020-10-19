@@ -7,44 +7,51 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-struct sKeys
+namespace fini
 {
-	std::string name;
-	std::string value;
-};
+	struct sKeys
+	{
+		std::string name;
+		std::string value;
+	};
 
-typedef sKeys kGrop;
+	typedef sKeys kGrop;
 
-struct sGrup
-{
-	kGrop name;
-	std::vector< sKeys> keys;
-};
+	struct sGrup
+	{
+		std::string name;
+		std::vector< sKeys> keys;
+	};
+
+	typedef sGrup INIDocument;
 
 class cFINIin
 {
-private:
-	alignas(16) std::string fbuf;
-	bool is;
-	int grup_index;
+	private:
 
-public:
+		alignas(16) std::string fbuf;
+		bool is;
+		int grup_index;
+	 std::vector<INIDocument > doc;
 
-	cFINIin();
-	//~cFINIin();
-	//
-	bool open(const char* puth);
-	//
-	bool openGrup(const char *name);
-	//bool isKey(const char* name);
-	//int getKey_u8(const char* name);
-	//int getKey_int(const char* name);
-	
-	// DEBUG
+	public:
+
+		cFINIin();
+		//~cFINIin();
+		//
+		bool open(const char* puth);
+		//
+		bool openGrup(const char* name);
+		//bool isKey(const char* name);
+		//int getKey_u8(const char* name);
+		//int getKey_int(const char* name);
+
+		// DEBUG
 #if _DEBUG 
-	void print_fbuf() { std::cout << fbuf << std::endl; }
+		void print_fbuf() { std::cout << fbuf << std::endl; }
 #else 
-	void print_fbuf() {}
+		void print_fbuf() {}
 #endif
 };
+
+}
